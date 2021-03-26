@@ -2,7 +2,7 @@
 ini_set('error_reporting',E_ALL);
 ini_set('display_errors',1);
 session_start();
-define("INDEX","wakecam_admin.php");
+define("INDEX","admin.php");
 include('../functions/db.inc.php');
 include('../functions/common.inc.php');
 //include '../pcdtr/php/class.php';

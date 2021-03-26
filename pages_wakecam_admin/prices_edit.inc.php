@@ -64,7 +64,7 @@ echo "</pre>";
     <div class="main_text_title">Add or Edit Boats</div>
     <table width="600" border="0" cellpadding="0" cellspacing="0">
       <tr class="bg_stats">
-        <form action="/wakecam_admin.php?p=prices&amp;sub=edit" method="post">
+        <form action="/admin.php?p=prices&amp;sub=edit" method="post">
           <td align="left" class="text_admin">Add Boat</td>
           <td width="275" align="left"><input name="name" type="text" class="text_admin" size="25" value="<?php if(isset($boat_data[0]["name"])){echo $boat_data[0]["name"];}?>"/></td>
           <td width="155" align="left">&nbsp;</td>
@@ -87,9 +87,9 @@ echo "</pre>";
 					foreach ($result as $data){
 	                	echo "<tr><td>&nbsp;</td><td>" . $data["name"] ;
 	                	echo "</td><td>";
-	                	echo "<a class=\"main_text_link\" href=\"/wakecam_admin.php?p=prices&sub=edit&edit=boats&ID=" . $data["ID"] . "\">Edit</a>";
+	                	echo "<a class=\"main_text_link\" href=\"/admin.php?p=prices&sub=edit&edit=boats&ID=" . $data["ID"] . "\">Edit</a>";
 	                	echo " / ";
-	                	echo "<a class=\"main_text_link\" href=\"/wakecam_admin.php?p=prices&sub=edit&del=boats&ID=" . $data["ID"] . "\">Delete</a>";
+	                	echo "<a class=\"main_text_link\" href=\"/admin.php?p=prices&sub=edit&del=boats&ID=" . $data["ID"] . "\">Delete</a>";
 	                	echo "</td></tr>";
 	                }                    
                 }
@@ -101,7 +101,7 @@ echo "</pre>";
           <div class="main_text_title">Add or Edit Category</div></td>
       </tr>
       <tr class="bg_stats">
-        <form action="/wakecam_admin.php?p=prices&amp;sub=edit" method="post">
+        <form action="/admin.php?p=prices&amp;sub=edit" method="post">
           <td align="left" class="text_admin">Add Category</td>
           <td align="left"><input name="name" type="text" class="text_admin" size="25" value="<?php if(isset($categories_data[0]["name"])){echo $categories_data[0]["name"];}?>"/></td>
           <td align="left"><input name="member" type="checkbox" value="1"<?php 
@@ -162,9 +162,9 @@ echo "</pre>";
 	                	}
 	                	
 	                	echo "</td><td>";
-	                	echo "<a class=\"main_text_link\" href=\"/wakecam_admin.php?p=prices&sub=edit&edit=categories&ID=" . $data["ID"] . "\">Edit</a>";
+	                	echo "<a class=\"main_text_link\" href=\"/admin.php?p=prices&sub=edit&edit=categories&ID=" . $data["ID"] . "\">Edit</a>";
 	                	echo " / ";
-	                	echo "<a class=\"main_text_link\" href=\"/wakecam_admin.php?p=prices&sub=edit&del=categories&ID=" . $data["ID"] . "\">Delete</a>";
+	                	echo "<a class=\"main_text_link\" href=\"/admin.php?p=prices&sub=edit&del=categories&ID=" . $data["ID"] . "\">Delete</a>";
 	                	echo "</td></tr>";
 	                }                    
                 }
@@ -176,7 +176,7 @@ echo "</pre>";
           <div class="main_text_title">Add or Edit Sports</div></td>
       </tr>
       <tr class="bg_stats">
-        <form action="/wakecam_admin.php?p=prices&amp;sub=edit" method="post">
+        <form action="/admin.php?p=prices&amp;sub=edit" method="post">
           <td align="left" class="text_admin">Add Sports</td>
           <td align="left"><input name="name" type="text" class="text_admin" size="25" value="<?php if(isset($sports_data[0]["name"])){echo $sports_data[0]["name"];}?>"/></td>
           <td align="left"><input name="member" type="checkbox" value="1"<?php 
@@ -237,9 +237,9 @@ echo "</pre>";
 	                	}
 	                	
 	                	echo "</td><td>";
-	                	echo "<a class=\"main_text_link\" href=\"/wakecam_admin.php?p=prices&sub=edit&edit=sports&ID=" . $data["ID"] . "\">Edit</a>";
+	                	echo "<a class=\"main_text_link\" href=\"/admin.php?p=prices&sub=edit&edit=sports&ID=" . $data["ID"] . "\">Edit</a>";
 	                	echo " / ";
-	                	echo "<a class=\"main_text_link\" href=\"/wakecam_admin.php?p=prices&sub=edit&del=sports&ID=" . $data["ID"] . "\">Delete</a>";
+	                	echo "<a class=\"main_text_link\" href=\"/admin.php?p=prices&sub=edit&del=sports&ID=" . $data["ID"] . "\">Delete</a>";
 	                	echo "</td></tr>";
 	                }                    
                 }

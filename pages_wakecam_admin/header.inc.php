@@ -22,15 +22,15 @@
     	<td width="10"><img src="/wakecam_admin_new/images/navi_left.gif" width="10" height="35" /></td>
     	<td><div class="navi_text">
         <a class="navi_text_link" href="<?php echo INDEX;?>?p=home">Home</a>
-  		<a class="navi_text_link" href="/wakecam_admin.php?p=logbook">Logbook</a>
- 		<a class="navi_text_link" href="/wakecam_admin.php?p=prices">Prices</a>
-  		<a class="navi_text_link" href="/wakecam_admin.php?p=members">Riders</a>
-  		<a class="navi_text_link" href="/wakecam_admin.php?p=statistics">Statistics</a>
-  		<a class="navi_text_link" href="/wakecam_admin.php?p=finance">Finance</a>
-  		<a class="navi_text_link" href="/wakecam_admin.php?p=preferences">Preferences</a>
+  		<a class="navi_text_link" href="/admin.php?p=logbook">Logbook</a>
+ 		<a class="navi_text_link" href="/admin.php?p=prices">Prices</a>
+  		<a class="navi_text_link" href="/admin.php?p=members">Riders</a>
+  		<a class="navi_text_link" href="/admin.php?p=statistics">Statistics</a>
+  		<a class="navi_text_link" href="/admin.php?p=finance">Finance</a>
+  		<a class="navi_text_link" href="/admin.php?p=preferences">Preferences</a>
   		<?php
     	if (isset($_SESSION["user_id"]) && strlen($_SESSION["user_id"])){
-    		echo "<a class=\"navi_text_link\" href=\"/wakecam_admin.php?p=logout\">";
+    		echo "<a class=\"navi_text_link\" href=\"/admin.php?p=logout\">";
     		echo "Logout";
     		echo "</a>";
     	}

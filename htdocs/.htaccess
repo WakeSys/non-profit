@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^[Aa]dmin /wakecam_admin.php
+RewriteRule ^[Aa]dmin /admin.php
 
 AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/xml
