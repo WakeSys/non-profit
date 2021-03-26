@@ -1,0 +1,40 @@
+RewriteEngine On
+
+DirectoryIndex ip_admin.php
+RewriteRule ^[Aa]dmin /wakecam_admin.php
+
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/atom_xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/x-httpd-php
+AddOutputFilterByType DEFLATE application/x-httpd-fastphp
+AddOutputFilterByType DEFLATE application/x-httpd-eruby
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE application/json
+
+
+# 1 HOUR
+<filesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|htm|html|)$">
+Header set Cache-Control "max-age=1209600, public"
+</filesMatch>
+
+# PHP - NO CACHING WANTED DUE TO USING SESSION COOKIES
+<filesMatch "\.(php)$">
+Header set Cache-Control "private"
+</filesMatch>
+
+# STORE BOTH COMPRESSED AND UNCOMPRESSED FILES FOR JS & CSS
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary Accept-Encoding
+  </FilesMatch>
+</IfModule>
+
+
