@@ -118,14 +118,14 @@ if (isset($paypal) && $paypal == "true"){
    <input type="hidden" name="cmd" value="_xclick" />
    <input type="hidden" name="business" value="<?php echo $preferences[0]["PaypalMail"];?>" />
    <input type="hidden" name="item_name" value="<?php  echo $preferences[0]["contact_name_of_school"]; ?>" />
-   <input type="hidden" name="cancel_return" value="http://<?php echo $_SERVER["HTTP_HOST"] . "/ip_admin.php?paypal=error";
+   <input type="hidden" name="cancel_return" value="http://<?php echo $_SERVER["HTTP_HOST"] . "/index.php?paypal=error";
 	foreach ($_POST as $key => $elem){
 		if ($key != "pass"){
 			echo "&" . $key . "=" . $elem;
 		}
 	}
    ?>" />
-   <input type="hidden" name="return" value="http://<?php echo $_SERVER["HTTP_HOST"] . "/ip_admin.php?paypal=true";
+   <input type="hidden" name="return" value="http://<?php echo $_SERVER["HTTP_HOST"] . "/index.php?paypal=true";
 	foreach ($_POST as $key => $elem){
 		if ($key != "pass"){
 			echo "&" . $key . "=" . $elem;

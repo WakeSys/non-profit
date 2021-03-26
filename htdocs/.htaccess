@@ -1,6 +1,5 @@
 RewriteEngine On
 
-DirectoryIndex ip_admin.php
 RewriteRule ^[Aa]dmin /wakecam_admin.php
 
 AddOutputFilterByType DEFLATE text/plain
