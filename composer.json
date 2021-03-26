@@ -1,0 +1,12 @@
+{
+    "name": "chilbo/non-profit",
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "authors": [
+        {
+            "name": "chrizzellu",
+            "email": "chrizzellu@users.noreply.github.com"
+        }
+    ]
+}

@@ -1,3 +1,4 @@
 *.bk
 .DS_Store
 .svn
+/vendor/
