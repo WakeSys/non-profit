@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__.'/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__.'/..');
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 $dotenv->load();
 
 $mysqldb = getenv("DB_DATABASE");		// DB name 
