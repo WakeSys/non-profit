@@ -277,7 +277,7 @@ elseif ( (isset($_POST["rideID"]) && is_numeric($_POST["rideID"])) ||  (isset($_
 	echo "--HOME--";
 	echo "<h2>" . $memberData[0]["name"] . "</h2>";
 	echo "<ul>";
-	//echo "<pre>";print_r($_POST);echo"</pre>";
+	echo "<pre>";print_r($_POST);echo"</pre>";
 		if ( isset($_POST["rideID"]) && is_numeric($_POST["rideID"])){
 			echo "<li>To Pay: " ;
 			echo "<span class=\"secondaryWArrow\"";
