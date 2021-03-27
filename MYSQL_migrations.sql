@@ -1,3 +1,6 @@
+# create tunnel to sql
+#ssh -p 14501 -L 3307:127.0.0.1:3306 -N deployer@e792a814dc.us1.amezmo.co
+
 #Disable ONLY_FULL_GROUP_BY
 SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
