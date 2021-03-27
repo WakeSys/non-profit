@@ -32,6 +32,11 @@ class MyDb {
       $this->mysqli = FALSE;
       exit();
     }
+    /* change character set to utf8 */
+    if (!$this->mysqli->set_charset ("utf8"))
+    {
+        printf ("Error loading character set utf8 for db_global : %s\n", $mysqli->error);
+    }
     $this->starttime = $this->microtime_float();
   }
 
