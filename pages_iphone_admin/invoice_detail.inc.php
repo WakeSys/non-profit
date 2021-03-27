@@ -352,9 +352,9 @@ elseif
         }
 	}
 	
-	echo "<pre>";
-		print_r($_POST);
-	echo"</pre>";
+	// echo "<pre>";
+	// 	print_r($_POST);
+	// echo"</pre>";
 	
 	if (isset($_POST["invoice_detail"]) && $_POST["invoice_detail"] == "camp_all")
 	{
@@ -495,9 +495,9 @@ elseif
 	echo "--HOME--";
 	echo "<h2>" . $memberData[0]["name"] . "</h2>";
 	echo "<ul>";
-		echo "<pre>";
-			print_r($_POST);
-		echo"</pre>";
+		// echo "<pre>";
+		// 	print_r($_POST);
+		// echo"</pre>";
 		if ( 
 			isset($_POST["rideID"]) && 
 			is_numeric($_POST["rideID"])
