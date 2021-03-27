@@ -1,4 +1,4 @@
-<?
+<?php
 echo '<div class="main">';
 	echo '<div class="navi_2_padding">';
 		echo '<table border="0" cellpadding="0" cellspacing="0" class="navi_2_bg">';
