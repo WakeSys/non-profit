@@ -287,8 +287,8 @@ echo '</table><table width="980" border="0" cellspacing="0" cellpadding="0">
 <td width="250"></td>
 <td width="230"></td>
 <td width="150"><strong>Total for this day :</strong></td>
-<td width="50" class="in"><strong>" . $totalIn . "</strong></td>
-<td width="50" class="out"><strong>" . $totalOut . "</strong></td>
+<td width="50" class="in"><strong>' . $totalIn . '</strong></td>
+<td width="50" class="out"><strong>' . $totalOut . '</strong></td>
 </tr>
 </table>';
 $sumTotalIn += $totalIn;
