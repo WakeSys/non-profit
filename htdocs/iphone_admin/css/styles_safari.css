@@ -195,10 +195,8 @@ a{
 	font-weight:700;
 	color:#FFF;
 	text-align:center;
-	position:absolute;
 	width:100%;
 	height:40px;
-	z-index:1;
 	padding-top:10px
 }
 .table_back_button{
@@ -210,13 +208,13 @@ a{
 	padding-left:6px
 }
 .table_plus_button{
-	position:absolute;
-	width:303px;
-	height:40px;
-	z-index:1;
-	padding-top:5px;
-	padding-left:6px;
-	text-align:right
+	height: 40px;
+	z-index: 1;
+	padding-top: 5px;
+	padding-left: 6px;
+	text-align: right;
+	float: right;
+	padding-right: 20px;
 }
 .button{
 	-webkit-transform:translate(0px,0);

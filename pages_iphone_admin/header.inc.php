@@ -20,14 +20,7 @@
 
 <body>
 <div class="table_back" >
-	<div class="table_back_top" id ="header_title"><?php
-		if (isset($title)){
-			echo $title;
-		}
-		else {
-			//echo "<img src=\"iphone_admin/images/wakesys_logo.png\" width=\"140\" height=\"25\" alt=\"WakeSys\" />";
-		}
-	?></div>
+	
 	<div class="table_plus_button" id="header_plus"><?php
 		if (isset($home) && $home == "true"){
 			echo "<a href=\"javascript: LoadPage('home');\"><img src=\"iphone_admin/css/images/home.png\" width=\"30\" height=\"30\" alt=\"home\" /></a>";
@@ -37,6 +30,15 @@
 	if (isset($back_title) && isset($back_page)){
 		echo "<a href=\"javascript: LoadPage('" . $back_page . "','');\" class=\"button\">" . $back_title . "</a>";
 	}
+	?></div>
+
+	<div class="table_back_top" id ="header_title"><?php
+		if (isset($title)){
+			echo $title;
+		}
+		else {
+			//echo "<img src=\"iphone_admin/images/wakesys_logo.png\" width=\"140\" height=\"25\" alt=\"WakeSys\" />";
+		}
 	?></div>
 </div>
 
