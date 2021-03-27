@@ -339,7 +339,7 @@ elseif
 	)
 )
 {
-	echo '<form method="POST" name="invoice_detail" action="javascript: LoadPage("addcredit",document.getElementById("form_invoice_detail"));" id="form_invoice_detail">';
+	echo "<form method=\"POST\" name=\"invoice_detail\" action=\"javascript: LoadPage('addcredit',document.getElementById('form_invoice_detail'));\" id=\"form_invoice_detail\">";
 	foreach ($_POST as $key => $elem)
 	{
         if (
@@ -565,10 +565,10 @@ elseif
 				$campNights == "-1"
 			)
 			{
-				echo '<li><a href="javascript: LoadPage("campNights","rideID=' . $memberData[0]["ID"] . '&memberID=' . $memberData[0]["ID"] . '&invoice_detail=' . $_POST["invoice_detail"] . '");">Add Nights<span class="showArrow secondaryWArrow"> </span></a></li>';	
+				echo "<li><a href=\"javascript: LoadPage('campNights','rideID=" . $memberData[0]["ID"] . "&memberID=" . $memberData[0]["ID"] . "&invoice_detail=" . $_POST["invoice_detail"] . "');\">Add Nights<span class=\"showArrow secondaryWArrow\"> </span></a></li>";	
 			}
 			else {
-				echo '<li><a href="javascript: LoadPage("campNights","rideID=' . $memberData[0]["ID"] . '&memberID=' . $memberData[0]["ID"] . '&invoice_detail=' . $_POST["invoice_detail"] . '&creditID=' . $campNights[0]["ID"] . '");">Edit Nights<span class="showArrow secondaryWArrow">(' . $campNights[0]["campNights"] . ' night';
+				echo "<li><a href=\"javascript: LoadPage('campNights','rideID=" . $memberData[0]["ID"] . "&memberID=" . $memberData[0]["ID"] . "&invoice_detail=" . $_POST["invoice_detail"] . "&creditID=" . $campNights[0]["ID"] . "');\">Edit Nights<span class=\"showArrow secondaryWArrow\">(" . $campNights[0]["campNights"] . " night";
 				if ($campNights[0]["campNights"] > 1)
 				{
 					echo "s";
@@ -610,7 +610,7 @@ elseif
 		foreach ($payments as $payment)
 		{
 			echo '<li>';
-			echo '<a href="javascript: LoadPage("addcredit","' . $payment["ID"] . '");\">';
+			echo "<a href=\"javascript: LoadPage('addcredit','" . $payment["ID"] . "');\">";
 			echo $payment["name"];
 			if (
 				$payment["value"] > 0 || 
@@ -734,7 +734,7 @@ else
 				)
 				{
 					echo "<li>";
-					echo '<a href="javascript: LoadPage("invoice_detail","memberID=' .  $member["ID"] . '&invoice_detail=camp_all");">';
+					echo "<a href=\"javascript: LoadPage('invoice_detail','memberID=" .  $member["ID"]. "&invoice_detail=camp_all');\">";
 					echo $member["name"]. " ";
 					$credits = getCurrentCredit($member["ID"]);
 					if(!isset($credits) || $credits == null)
@@ -759,7 +759,7 @@ else
 				) 
 				{
 					echo "<li>";
-					echo '<a href="javascript: LoadPage("invoice_detail","rideID=' .  $member["rideID"]. '&invoice_detail=nonMember_' . $_POST["nonMember"] . '");\">';
+					echo "<a href=\"javascript: LoadPage('invoice_detail','rideID=" .  $member["rideID"]. "&invoice_detail=nonMember_" . $_POST["nonMember"] . "');\">";
 					echo $member["name"]. " ";
 					echo '<span class="showArrow secondaryWArrow" style="color:red;"';
 					echo ">" . $member["value"] . " " . getPreferences("currencyHTML") . "";
