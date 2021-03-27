@@ -734,7 +734,7 @@ else
 				)
 				{
 					echo "<li>";
-					echo '<a href="javascript: LoadPage("invoice_detail","memberID=' .  $member["ID"]. '&invoice_detail=camp_all");">';
+					echo '<a href="javascript: LoadPage("invoice_detail","memberID=' .  $member["ID"] . '&invoice_detail=camp_all");">';
 					echo $member["name"]. " ";
 					$credits = getCurrentCredit($member["ID"]);
 					if(!isset($credits) || $credits == null)
@@ -765,8 +765,6 @@ else
 					echo ">" . $member["value"] . " " . getPreferences("currencyHTML") . "";
 					echo "</span></a></li>";
 				}
-				
-				
 			}	
 		}
 		else {
