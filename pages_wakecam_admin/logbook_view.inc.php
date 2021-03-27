@@ -303,8 +303,8 @@ echo '<table width="980" border="0" cellspacing="0" cellpadding="0">
 <td width="250"></td>
 <td width="230"></td>
 <td width="150"><strong>Total for this month :</strong></td>
-<td width="50" class="in"><strong>" . $sumTotalIn . "</strong></td>
-<td width="50" class="out"><strong>" . $sumTotalOut . "</strong></td>
+<td width="50" class="in"><strong>' . $sumTotalIn . '</strong></td>
+<td width="50" class="out"><strong>' . $sumTotalOut . '</strong></td>
 </tr>
 </table>';
 
