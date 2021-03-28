@@ -71,7 +71,7 @@
                         else {
                             echo "<td>" . $credit . " " . getPreferences("currencyHTML") . "</td>";
                         }
-	        	echo "<td><a class=\"link\" href=\"" . INDEX . "?p=members&sub=add&view=" . $member["ID"] . "\">View</a> / <a class=\"link\" href=\"" . INDEX . "?p=members&sub=add&edit=" . $member["ID"] . "\">Edit</a><br /> Reactivate / Delete</td>";
+	        	echo "<td><a class=\"link\" href=\"" . INDEX . "?p=members&sub=add&view=" . $member["ID"] . "\">View</a> / <a class=\"link\" href=\"" . INDEX . "?p=members&sub=add&edit=" . $member["ID"] . "\">Edit</a></td>";
 	      	echo "</tr>";
 	      }
       }
