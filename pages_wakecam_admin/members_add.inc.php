@@ -585,6 +585,11 @@ function inputField ($name,$value=null){
 	<?php
 	if ($type == "edit")
 	{
+
+		echo '$member[0]: ';
+		echo '<pre>';
+			print_r($member[0]);
+		echo '</pre>';
 		if(!$member[0]["campRider"] == 'no')
 		{
 			echo '<tr>';
