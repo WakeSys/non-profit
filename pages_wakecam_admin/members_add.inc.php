@@ -583,80 +583,83 @@ function inputField ($name,$value=null){
 		<td>&nbsp;</td>
 	  </tr>
 	<?php
-	if (!$member[0]["campRider"] == 'no' && $type == "edit")
+	if ($type == "edit")
 	{
-		echo '<tr>';
-			echo '<td>Active</td>';
-			if ($type == "view"){
-				echo "<td>";
-				if ($member[0]["campRider"] == 'yes')
-				{
-					echo "yes";
+		if(!$member[0]["campRider"] == 'no')
+		{
+			echo '<tr>';
+				echo '<td>Active</td>';
+				if ($type == "view"){
+					echo "<td>";
+					if ($member[0]["campRider"] == 'yes')
+					{
+						echo "yes";
+					}
+					else 
+					{
+						echo "no";
+					}
+					echo "</td>";
 				}
-				else 
-				{
-					echo "no";
-				}
-				echo "</td>";
-			}
-			else {
-				echo "<td>";
-				if ($type == "add"){
-					echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
-					if (
-						isset($_POST["campRider"]) && 
-						$_POST["campRider"] == 'yes'
-					)
-					{
-						echo " checked";
+				else {
+					echo "<td>";
+					if ($type == "add"){
+						echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
+						if (
+							isset($_POST["campRider"]) && 
+							$_POST["campRider"] == 'yes'
+						)
+						{
+							echo " checked";
+						}
+						echo ">yes";
+						echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
+						if ((isset($_POST["campRider"]) && $_POST["campRider"] == 'inactive') || !isset($_POST["campRider"]))
+						{
+							echo " checked";
+						}
+						
+						echo ">no</td>";
 					}
-					echo ">yes";
-					echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
-					if ((isset($_POST["campRider"]) && $_POST["campRider"] == 'inactive') || !isset($_POST["campRider"]))
-					{
-						echo " checked";
-					}
-					
-					echo ">no</td>";
-				}
-				elseif ($type == "edit"){
-					echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
-					if (
-						isset($_POST["campRider"]) && 
-						$_POST["campRider"] == 'yes'
-					)
-					{
-						echo " checked";
-					}
-					elseif (
-						!isset($_POST["campRider"]) && 
-						$member[0]["campRider"] == 'yes'
-					)
-					{
-						echo " checked";
-					}
-					echo ">yes";
-					echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
-					if (
-						(isset($_POST["campRider"]) &&
-						$_POST["campRider"] == 'inactive') || 
-						(
+					elseif ($type == "edit"){
+						echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
+						if (
+							isset($_POST["campRider"]) && 
+							$_POST["campRider"] == 'yes'
+						)
+						{
+							echo " checked";
+						}
+						elseif (
 							!isset($_POST["campRider"]) && 
-							$member[0]["campRider"] != 'inactive'
-						) 
-					)
-					{
-						echo " checked";
-					}
-					
-					echo ">no</td>";
-				}	
-			}
-		echo '</tr>';
-		echo '<tr>';
-			echo '<td>&nbsp;</td>';
-			echo '<td>&nbsp;</td>';
-		echo '</tr>';
+							$member[0]["campRider"] == 'yes'
+						)
+						{
+							echo " checked";
+						}
+						echo ">yes";
+						echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
+						if (
+							(isset($_POST["campRider"]) &&
+							$_POST["campRider"] == 'inactive') || 
+							(
+								!isset($_POST["campRider"]) && 
+								$member[0]["campRider"] != 'inactive'
+							) 
+						)
+						{
+							echo " checked";
+						}
+						
+						echo ">no</td>";
+					}	
+				}
+			echo '</tr>';
+			echo '<tr>';
+				echo '<td>&nbsp;</td>';
+				echo '<td>&nbsp;</td>';
+			echo '</tr>';
+		}
 	}
 
 	  echo '<tr>';
