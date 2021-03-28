@@ -150,7 +150,7 @@ echo '<div class="main">';
 				$memberID = $db->insertId();
 				
 				first_mail($memberID);
-				echo "<div style=\"color:green;\">member / camp rider entered successfully</div>";
+				echo "<div style=\"color:green;\">Customer entered successfully</div>";
 				//add 1 Year membership!!!
 				if (
 					isset($_POST["campRider"]) && 
