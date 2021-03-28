@@ -23,7 +23,7 @@ function first_mail($memberID) {
 	$email->setFrom("noreply@wakesys.com");
 	$email->setSubject($mailSubject);
 	$email->addTo($memberData[0]["mail"]);
-	$email->addCc('boeinglover@gmail.com');
+	// $email->addCc('EMAIL@PROVIDER.com');
 	$email->addBcc($preferences[0]["contact_mail"]);
 	$email->addContent("text/plain", $mailText);
 
@@ -36,14 +36,6 @@ function first_mail($memberID) {
 	} catch (Exception $e) {
 		echo 'Caught exception: '. $e->getMessage() ."\n";
 	}
-
-	// mail(
-	// 	$memberData[0]["mail"],
-	// 	$mailSubject,
-	// 	$mailText,
-	// 	"from:" . $preferences[0]["contact_mail"] ."\n
-	// 	BCC:" . $preferences[0]["contact_mail"]
-	// );
 }
 
 function error_die ($error){
@@ -89,7 +81,7 @@ function setPaid($memberID,$value,$paymentID,$loginID,$status,$type="member",$no
 			$payment = $db->queryArray($sql);
 
 			$sql = "INSERT INTO invoices (memberID,value,loginID,paymentID,status,paymentAddValue, paymentAddPercent)
-                            VALUES ('" . $memberID . "','" . $value . "','" . $loginID . "','" . $paymentID . "','" . $status . "', '" . $payment[0]["value"] . "', '" . $payment[0]["percent"] . "')";
+							VALUES ('" . $memberID . "','" . $value . "','" . $loginID . "','" . $paymentID . "','" . $status . "', '" . $payment[0]["value"] . "', '" . $payment[0]["percent"] . "')";
 
 			$db->execute($sql);
 			$invoiceID = $db->insertId();
@@ -97,7 +89,8 @@ function setPaid($memberID,$value,$paymentID,$loginID,$status,$type="member",$no
 			$sql = "SELECT campRider FROM members WHERE ID = '" . $memberID . "'";
 			$campMember = $db->querySingleItem($sql);
 			//Wenn ja Update campNights ride to invoiceID
-			if ($campMember == "yes"){
+			if ($campMember == "yes")
+			{
 				$sql = "UPDATE credits SET invoiceID = '" . $invoiceID . "' WHERE memberID = '" . $memberID . "' AND invoiceID IS NULL";
 				$db->execute($sql);
 
@@ -105,39 +98,31 @@ function setPaid($memberID,$value,$paymentID,$loginID,$status,$type="member",$no
 				$db->execute($sql);
 			}
 
-                        $sql = "SELECT mail FROM members WHERE ID = '" . $memberID . "'";
-                        $mail = $db->querySingleItem($sql);
-                        ob_start();
-                        $_GET["ID"] = $invoiceID;
-                        include ('../pages_wakecam_admin/invoice.inc.php');
-                        $HTML_invoice = ob_get_contents();
-                        ob_end_clean();
+			$sql = "SELECT mail FROM members WHERE ID = '" . $memberID . "'";
+			$mail = $db->querySingleItem($sql);
+			ob_start();
+			$_GET["ID"] = $invoiceID;
+			include ('../pages_wakecam_admin/invoice.inc.php');
+			$HTML_invoice = ob_get_contents();
+			ob_end_clean();
 
-                        // für HTML-E-Mails muss der 'Content-type'-Header gesetzt werden
-                        // $header  = 'MIME-Version: 1.0' . "\r\n";
-                        // $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                        // zusätzliche Header
-                        // $header .= "FROM:" . $preferences[0]["contact_mail"] . "\r\n";
+			$email = new \SendGrid\Mail\Mail(); 
+			$email->setFrom("noreply@wakesys.com");
+			$email->setSubject("Confirmation of payment");
+			$email->addTo($mail);
+			// $email->addCc('EMAIL@PROVIDER.com');
+			$email->addBcc($preferences[0]["contact_mail"]);
+			$email->addContent("text/html", $HTML_invoice);
 
-                        $email = new \SendGrid\Mail\Mail(); 
-						$email->setFrom("noreply@wakesys.com");
-						$email->setSubject("Confirmation of payment");
-						$email->addTo($mail);
-						$email->addCc('boeinglover@gmail.com');
-						$email->addBcc($preferences[0]["contact_mail"]);
-						$email->addContent("text/html", $HTML_invoice);
-
-						$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-						try {
-							$response = $sendgrid->send($email);
-							// print $response->statusCode() . "\n";
-							// print_r($response->headers());
-							// print $response->body() . "\n";
-						} catch (Exception $e) {
-							echo 'Caught exception: '. $e->getMessage() ."\n";
-						}
-
-                        // mail($mail,"Confirmation of payment",$HTML_invoice,$header);
+			$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+			try {
+				$response = $sendgrid->send($email);
+				// print $response->statusCode() . "\n";
+				// print_r($response->headers());
+				// print $response->body() . "\n";
+			} catch (Exception $e) {
+				echo 'Caught exception: '. $e->getMessage() ."\n";
+			}
 		}
 		else {
 			echo "FEHLER! Pay Member";
@@ -159,37 +144,32 @@ function setPaid($memberID,$value,$paymentID,$loginID,$status,$type="member",$no
 			$sql = "UPDATE credits SET invoiceID='" . $db->insertId() . "' WHERE rideID = '".$memberID."'";
 			$db->execute($sql);
 
-                        if (isset($nonMemberMail) && strlen($nonMemberMail)>3){
-                            ob_start();
-                            $_GET["ID"] = $invoiceID;
-                            include ('../pages_wakecam_admin/invoice.inc.php');
-                            $HTML_invoice = ob_get_contents();
-                            ob_end_clean();
-                            // für HTML-E-Mails muss der 'Content-type'-Header gesetzt werden
-                            // $header  = 'MIME-Version: 1.0' . "\r\n";
-                            // $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                            // zusätzliche Header
-                            // $header .= "FROM:" . $preferences[0]["contact_mail"] . "\r\n";
-                            // mail($nonMemberMail,"Confirmation of Payment",$HTML_invoice,$header);
+			if (isset($nonMemberMail) && strlen($nonMemberMail)>3)
+			{
+				ob_start();
+				$_GET["ID"] = $invoiceID;
+				include ('../pages_wakecam_admin/invoice.inc.php');
+				$HTML_invoice = ob_get_contents();
+				ob_end_clean();
 
-                            $email = new \SendGrid\Mail\Mail(); 
-							$email->setFrom("noreply@wakesys.com");
-							$email->setSubject("Confirmation of Payment");
-							$email->addTo($nonMemberMail);
-							$email->addCc('boeinglover@gmail.com');
-							$email->addBcc($preferences[0]["contact_mail"]);
-							$email->addContent("text/html", $HTML_invoice);
+				$email = new \SendGrid\Mail\Mail(); 
+				$email->setFrom("noreply@wakesys.com");
+				$email->setSubject("Confirmation of Payment");
+				$email->addTo($nonMemberMail);
+				// $email->addCc('EMAIL@PROVIDER.com');
+				$email->addBcc($preferences[0]["contact_mail"]);
+				$email->addContent("text/html", $HTML_invoice);
 
-							$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-							try {
-								$response = $sendgrid->send($email);
-								// print $response->statusCode() . "\n";
-								// print_r($response->headers());
-								// print $response->body() . "\n";
-							} catch (Exception $e) {
-								echo 'Caught exception: '. $e->getMessage() ."\n";
-							}
-                        }
+				$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+				try {
+					$response = $sendgrid->send($email);
+					// print $response->statusCode() . "\n";
+					// print_r($response->headers());
+					// print $response->body() . "\n";
+				} catch (Exception $e) {
+					echo 'Caught exception: '. $e->getMessage() ."\n";
+				}
+			}
 		}
 		else {
 			echo "ERROR! Pay NonMember";
