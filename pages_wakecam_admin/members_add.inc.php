@@ -178,8 +178,8 @@ function inputField ($name,$value=null){
 	if ($type == "add"){
 		?>
 		 <tr>
-		    <td width="194">Prepaid or Postpaid Customer?</td>
-		    <td><select name="campRider" id="select">
+			<td width="194">Prepaid or Postpaid Customer?</td>
+			<td><select name="campRider" id="select">
 				<?php
 					echo "<option value = \"no\"";
 					if (isset($_POST["campRider"]) && $_POST["campRider"] == "no"){
@@ -192,500 +192,499 @@ function inputField ($name,$value=null){
 					}
 					echo ">Postpaid Customer</option>";
 				?>
-		      
-	        </select> 
-		    </td>
-	      </tr>
+			  
+			</select> 
+			</td>
+		  </tr>
 		<?php
 	}
 	?>	 
-      <td>Category</td>
-      	<?php
-      	if ($type == "view"){
-      		echo "<td>" . $member[0]["categoryName"] . "</td>";
-      	}
-      	else {
-      		?>
-      		<td><select name="categoryID">
-      		<?php
-      			$sql = "SELECT * FROM categories WHERE active = 1 ";
+	  <td>Category</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["categoryName"] . "</td>";
+		}
+		else {
+			?>
+			<td><select name="categoryID">
+			<?php
+				$sql = "SELECT * FROM categories WHERE active = 1 ";
 				$sql .= "AND (member = 1 OR member = 3)";
-      			$catArr = $db->queryArray($sql);
-      			foreach ($catArr as $category){
-      				echo "<option value=\"" . $category["ID"] . "\"";
-      				if ($type == "add" && isset($_POST["categoryID"])){
-      					if ($_POST["categoryID"] == $category["ID"]){
-      						echo " selected";
-      					}
-      				}
-      				elseif($type == "edit"){
-      					if (isset($_POST["categoryID"])){
-	      					if ($_POST["categoryID"] == $category["ID"]){
-	      						echo " selected";
-	      					}
-	      				}
-      					elseif (!isset($_POST["categoryID"]) && $member[0]["categoryID"] == $category["ID"]){
-      						echo " selected";
-      					}
-      				}
-      				echo ">";
-      				echo $category["name"];
-      				echo "</option>";
-      			}
-      		?>
-	        </select></td>
-      		<?php
-      	}
-      	?>
-		    
-      </tr>
+				$catArr = $db->queryArray($sql);
+				foreach ($catArr as $category){
+					echo "<option value=\"" . $category["ID"] . "\"";
+					if ($type == "add" && isset($_POST["categoryID"])){
+						if ($_POST["categoryID"] == $category["ID"]){
+							echo " selected";
+						}
+					}
+					elseif($type == "edit"){
+						if (isset($_POST["categoryID"])){
+							if ($_POST["categoryID"] == $category["ID"]){
+								echo " selected";
+							}
+						}
+						elseif (!isset($_POST["categoryID"]) && $member[0]["categoryID"] == $category["ID"]){
+							echo " selected";
+						}
+					}
+					echo ">";
+					echo $category["name"];
+					echo "</option>";
+				}
+			?>
+			</select></td>
+			<?php
+		}
+		?>
+			
+	  </tr>
 	  <tr>
-	    <td>First Name</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["first_name"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("first_name","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["first_name"])){
-	    			inputField("first_name",$_POST["first_name"]);
-	    		}
-	    		else {
-	    			inputField("first_name",$member[0]["first_name"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>First Name</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["first_name"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("first_name","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["first_name"])){
+					inputField("first_name",$_POST["first_name"]);
+				}
+				else {
+					inputField("first_name",$member[0]["first_name"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Last Name</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["last_name"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("last_name","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["last_name"])){
-	    			inputField("last_name",$_POST["last_name"]);
-	    		}
-	    		else {
-	    			inputField("last_name",$member[0]["last_name"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
-      <?php
-      if ($type != "view"){
-      	  echo "<tr>";
-		    echo "<td>Password</td>";
-		    echo "<td><input name=\"password\" type=\"password\" size=\"30\" /></td>";
-	      echo "</tr>";
-      }
-      ?>
+		<td>Last Name</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["last_name"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("last_name","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["last_name"])){
+					inputField("last_name",$_POST["last_name"]);
+				}
+				else {
+					inputField("last_name",$member[0]["last_name"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
+	  <?php
+	  if ($type != "view"){
+		  echo "<tr>";
+			echo "<td>Password</td>";
+			echo "<td><input name=\"password\" type=\"password\" size=\"30\" /></td>";
+		  echo "</tr>";
+	  }
+	  ?>
 	  <tr>
 	  <tr>
-	    <td>Birthday (dd.mm.yyyy)</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . date("d\.m\.Y",$member[0]["birthday"]) . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("birthday","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["birthday"])){
-	    			inputField("birthday","POST");
-	    		}
-	    		else {
-	    			inputField("birthday",date("d\.m\.Y",$member[0]["birthday"]));		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>Birthday (dd.mm.yyyy)</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . date("d\.m\.Y",$member[0]["birthday"]) . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("birthday","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["birthday"])){
+					inputField("birthday","POST");
+				}
+				else {
+					inputField("birthday",date("d\.m\.Y",$member[0]["birthday"]));		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Social Security</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["social_security"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("social_security","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["social_security"])){
-	    			inputField("social_security",$_POST["social_security"]);
-	    		}
-	    		else {
-	    			inputField("social_security",$member[0]["social_security"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>Social Security</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["social_security"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("social_security","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["social_security"])){
+					inputField("social_security",$_POST["social_security"]);
+				}
+				else {
+					inputField("social_security",$member[0]["social_security"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Address</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["address"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("address","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["address"])){
-	    			inputField("address","POST");
-	    		}
-	    		else {
-	    			inputField("address",$member[0]["address"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>Address</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["address"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("address","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["address"])){
+					inputField("address","POST");
+				}
+				else {
+					inputField("address",$member[0]["address"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Postal Code</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["postal_code"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("postal_code","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["postal_code"])){
-	    			inputField("postal_code",$_POST["postal_code"]);
-	    		}
-	    		else {
-	    			inputField("postal_code",$member[0]["postal_code"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
-      </tr>
+		<td>Postal Code</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["postal_code"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("postal_code","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["postal_code"])){
+					inputField("postal_code",$_POST["postal_code"]);
+				}
+				else {
+					inputField("postal_code",$member[0]["postal_code"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
+	  </tr>
 	  <tr>
-	    <td>Town</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["town"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("town","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["town"])){
-	    			inputField("town",$_POST["town"]);
-	    		}
-	    		else {
-	    			inputField("town",$member[0]["town"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>Town</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["town"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("town","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["town"])){
+					inputField("town",$_POST["town"]);
+				}
+				else {
+					inputField("town",$member[0]["town"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Country</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["country"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("country","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["country"])){
-	    			inputField("country",$_POST["country"]);
-	    		}
-	    		else {
-	    			inputField("country",$member[0]["country"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>Country</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["country"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("country","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["country"])){
+					inputField("country",$_POST["country"]);
+				}
+				else {
+					inputField("country",$member[0]["country"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Phone Number</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["phone_number"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("phone_number","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["phone_number"])){
-	    			inputField("phone_number",$_POST["phone_number"]);
-	    		}
-	    		else {
-	    			inputField("phone_number",$member[0]["phone_number"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>Phone Number</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["phone_number"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("phone_number","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["phone_number"])){
+					inputField("phone_number",$_POST["phone_number"]);
+				}
+				else {
+					inputField("phone_number",$member[0]["phone_number"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Email</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["mail"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("mail","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["mail"])){
-	    			inputField("mail",$_POST["mail"]);
-	    		}
-	    		else {
-	    			inputField("mail",$member[0]["mail"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
+		<td>Email</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>" . $member[0]["mail"] . "</td>";
+		}
+		elseif($type == "add") {
+			echo "<td>";
+			inputField("mail","POST");
+			echo "</td>";
+		}
+		elseif($type == "edit") {
+			echo "<td>";
+				if (isset($_POST["mail"])){
+					inputField("mail",$_POST["mail"]);
+				}
+				else {
+					inputField("mail",$member[0]["mail"]);		
+				}
+			echo "</td>";
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>&nbsp;</td>
-	    <td>&nbsp;</td>
-      </tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	  </tr>
 	  <tr>
-	    <td>Ballast</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>";
-	    	if ($member[0]["ballast"] == "yes"){
-	    		echo "yes";
-	    	}
-	    	else {
-	    		echo "no";
-	    	}
-	    	echo "</td>";
-	    }
-	    else {
-	    	echo "<td>";
-	    	if ($type == "add"){
-	    		echo "<input type=\"radio\" name=\"ballast\" value=\"yes\"";
-	    		if (isset($_POST["ballast"]) && $_POST["ballast"] == "yes"){
-	    			echo " checked";
+		<td>Ballast</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>";
+			if ($member[0]["ballast"] == "yes"){
+				echo "yes";
+			}
+			else {
+				echo "no";
+			}
+			echo "</td>";
+		}
+		else {
+			echo "<td>";
+			if ($type == "add"){
+				echo "<input type=\"radio\" name=\"ballast\" value=\"yes\"";
+				if (isset($_POST["ballast"]) && $_POST["ballast"] == "yes"){
+					echo " checked";
 				}
 				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"ballast\" value=\"no\"";
-		    	if ((isset($_POST["ballast"]) && $_POST["ballast"] == "no") || !isset($_POST["ballast"])){
-	    			echo " checked";
+				echo "<input type=\"radio\" name=\"ballast\" value=\"no\"";
+				if ((isset($_POST["ballast"]) && $_POST["ballast"] == "no") || !isset($_POST["ballast"])){
+					echo " checked";
 				}
 				
-		    	echo ">no</td>";
-	    	}
-	    	elseif ($type == "edit"){
-	    		echo "<input type=\"radio\" name=\"ballast\" value=\"yrs\"";
-	    		if (isset($_POST["ballast"]) && $_POST["ballast"] == "yes"){
-	    			echo " checked";
+				echo ">no</td>";
+			}
+			elseif ($type == "edit"){
+				echo "<input type=\"radio\" name=\"ballast\" value=\"yrs\"";
+				if (isset($_POST["ballast"]) && $_POST["ballast"] == "yes"){
+					echo " checked";
 				}
 				elseif (!isset($_POST["ballast"]) && $member[0]["ballast"] == "yes"){
 					echo " checked";
 				}
 				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"ballast\" value=\"no\"";
-		    	if ((isset($_POST["ballast"]) && $_POST["ballast"] == "no") || (!isset($_POST["ballast"]) && $member[0]["ballast"] != "yes") ){
-	    			echo " checked";
+				echo "<input type=\"radio\" name=\"ballast\" value=\"no\"";
+				if ((isset($_POST["ballast"]) && $_POST["ballast"] == "no") || (!isset($_POST["ballast"]) && $member[0]["ballast"] != "yes") ){
+					echo " checked";
 				}
 				
-		    	echo ">no</td>";
-	    	}
-		    		
-	    }
-	    ?>
-      </tr>
+				echo ">no</td>";
+			}
+					
+		}
+		?>
+	  </tr>
 	  <tr>
-	    <td>Driver</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>";
-	    	if ($member[0]["driver"] == 1){
-	    		echo "yes";
-	    	}
-	    	else {
-	    		echo "no";
-	    	}
-	    	echo "</td>";
-	    }
-	    else {
-	    	echo "<td>";
-	    	if ($type == "add"){
-	    		echo "<input type=\"radio\" name=\"driver\" value=\"1\"";
-	    		if (isset($_POST["driver"]) && $_POST["driver"] == 1){
-	    			echo " checked";
+		<td>Driver</td>
+		<?php
+		if ($type == "view"){
+			echo "<td>";
+			if ($member[0]["driver"] == 1){
+				echo "yes";
+			}
+			else {
+				echo "no";
+			}
+			echo "</td>";
+		}
+		else {
+			echo "<td>";
+			if ($type == "add"){
+				echo "<input type=\"radio\" name=\"driver\" value=\"1\"";
+				if (isset($_POST["driver"]) && $_POST["driver"] == 1){
+					echo " checked";
 				}
 				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"driver\" value=\"2\"";
-		    	if ((isset($_POST["driver"]) && $_POST["driver"] == 2) || !isset($_POST["driver"])){
-	    			echo " checked";
+				echo "<input type=\"radio\" name=\"driver\" value=\"2\"";
+				if ((isset($_POST["driver"]) && $_POST["driver"] == 2) || !isset($_POST["driver"])){
+					echo " checked";
 				}
 				
-		    	echo ">no</td>";
-	    	}
-	    	elseif ($type == "edit"){
-	    		echo "<input type=\"radio\" name=\"driver\" value=\"1\"";
-	    		if (isset($_POST["driver"]) && $_POST["driver"] == 1){
-	    			echo " checked";
+				echo ">no</td>";
+			}
+			elseif ($type == "edit"){
+				echo "<input type=\"radio\" name=\"driver\" value=\"1\"";
+				if (isset($_POST["driver"]) && $_POST["driver"] == 1){
+					echo " checked";
 				}
 				elseif (!isset($_POST["driver"]) && $member[0]["driver"] == 1){
 					echo " checked";
 				}
 				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"driver\" value=\"2\"";
-		    	if ((isset($_POST["driver"]) && $_POST["driver"] == 2) || (!isset($_POST["driver"]) && $member[0]["driver"] != 1) ){
-	    			echo " checked";
-				}
-				
-		    	echo ">no</td>";
-	    	}	
-	    }
-	    ?>
-      </tr>
-	  <tr>
-	    <td>&nbsp;</td>
-	    <td>&nbsp;</td>
-      </tr>
-      <?php
-      if (!$member[0]["campRider"] == 'no')
-      {
-
-      }
-      echo '<tr>';
-	    echo '<td>Active</td>';
-	    if ($type == "view"){
-	    	echo "<td>";
-	    	if ($member[0]["campRider"] == 'yes')
-	    	{
-	    		echo "yes";
-	    	}
-	    	else 
-	    	{
-	    		echo "no";
-	    	}
-	    	echo "</td>";
-	    }
-	    else {
-	    	echo "<td>";
-	    	if ($type == "add"){
-	    		echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
-	    		if (
-	    			isset($_POST["campRider"]) && 
-	    			$_POST["campRider"] == 'yes'
-	    		)
-	    		{
-	    			echo " checked";
-				}
-				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
-		    	if ((isset($_POST["campRider"]) && $_POST["campRider"] == 'inactive') || !isset($_POST["campRider"]))
-		    	{
-	    			echo " checked";
-				}
-				
-		    	echo ">no</td>";
-	    	}
-	    	elseif ($type == "edit"){
-	    		echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
-	    		if (
-	    			isset($_POST["campRider"]) && 
-	    			$_POST["campRider"] == 'yes'
-	    		)
-	    		{
-	    			echo " checked";
-				}
-				elseif (
-					!isset($_POST["campRider"]) && 
-					$member[0]["campRider"] == 'yes'
-				)
-				{
+				echo "<input type=\"radio\" name=\"driver\" value=\"2\"";
+				if ((isset($_POST["driver"]) && $_POST["driver"] == 2) || (!isset($_POST["driver"]) && $member[0]["driver"] != 1) ){
 					echo " checked";
 				}
-				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
-		    	if (
-		    		(isset($_POST["campRider"]) &&
-		    		$_POST["campRider"] == 'inactive') || 
-		    		(
-		    			!isset($_POST["campRider"]) && 
-		    			$member[0]["campRider"] != 'inactive'
-		    		) 
-		    	)
-		    	{
-	    			echo " checked";
+				
+				echo ">no</td>";
+			}	
+		}
+		?>
+	  </tr>
+	  <tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	  </tr>
+	<?php
+	if (!$member[0]["campRider"] == 'no' && $type == "edit")
+	{
+		echo '<tr>';
+			echo '<td>Active</td>';
+			if ($type == "view"){
+				echo "<td>";
+				if ($member[0]["campRider"] == 'yes')
+				{
+					echo "yes";
+				}
+				else 
+				{
+					echo "no";
+				}
+				echo "</td>";
+			}
+			else {
+				echo "<td>";
+				if ($type == "add"){
+					echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
+					if (
+						isset($_POST["campRider"]) && 
+						$_POST["campRider"] == 'yes'
+					)
+					{
+						echo " checked";
+					}
+					echo ">yes";
+					echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
+					if ((isset($_POST["campRider"]) && $_POST["campRider"] == 'inactive') || !isset($_POST["campRider"]))
+					{
+						echo " checked";
+					}
+					
+					echo ">no</td>";
+				}
+				elseif ($type == "edit"){
+					echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
+					if (
+						isset($_POST["campRider"]) && 
+						$_POST["campRider"] == 'yes'
+					)
+					{
+						echo " checked";
+					}
+					elseif (
+						!isset($_POST["campRider"]) && 
+						$member[0]["campRider"] == 'yes'
+					)
+					{
+						echo " checked";
+					}
+					echo ">yes";
+					echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
+					if (
+						(isset($_POST["campRider"]) &&
+						$_POST["campRider"] == 'inactive') || 
+						(
+							!isset($_POST["campRider"]) && 
+							$member[0]["campRider"] != 'inactive'
+						) 
+					)
+					{
+						echo " checked";
+					}
+					
+					echo ">no</td>";
+				}	
+			}
+		echo '</tr>';
+		echo '<tr>';
+			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td>';
+		echo '</tr>';
+	}
+
+	  echo '<tr>';
+		echo '<td>&nbsp;</td>';
+
+		if ($type == "view"){
+			echo "<td>";
+				if ($member[0]["campRider"] == 'no')
+				{
+					echo "<a href=\"" . INDEX . "?p=members&sub=view_members\">Back</a>";
+				}
+				else {
+					echo "<a href=\"" . INDEX . "?p=members&sub=view_camp_riders\">Back</a>";	
 				}
 				
-		    	echo ">no</td>";
-	    	}	
-	    }
-	    ?>
-      </tr>
-	  <tr>
-	    <td>&nbsp;</td>
-	    <td>&nbsp;</td>
-      </tr>
-	  <tr>
-	    <td>&nbsp;</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>";
-	    		if ($member[0]["campRider"] == 'no')
-	    		{
-	    			echo "<a href=\"" . INDEX . "?p=members&sub=view_members\">Back</a>";
-	    		}
-	    		else {
-	    			echo "<a href=\"" . INDEX . "?p=members&sub=view_camp_riders\">Back</a>";	
-	    		}
-		    	
-		    	echo " <a href=\"" . INDEX . "?p=members&sub=add&edit=" . $_GET["view"] . "\">edit</a>";
-		    echo "</td>";
-	    }
-	    elseif($type == "edit"){
-	    	echo "<td><input type=\"submit\" value=\"Submit\" /></td>";
-	    }
+				echo " <a href=\"" . INDEX . "?p=members&sub=add&edit=" . $_GET["view"] . "\">edit</a>";
+			echo "</td>";
+		}
+		elseif($type == "edit"){
+			echo "<td><input type=\"submit\" value=\"Submit\" /></td>";
+		}
 		elseif($type == "add"){
-	    	echo "<td><input type=\"submit\" value=\"Add\" /></td>";
-	    }
-		    
-	    ?>
-	    
-      </tr>
+			echo "<td><input type=\"submit\" value=\"Add\" /></td>";
+		}
+			
+		?>
+		
+	  </tr>
 	  </table>
 	  </form>
 	</div>
