@@ -607,7 +607,7 @@ echo '<div class="main">';
 						$member[0]["campRider"] == 'yes' ||
 						(
 							isset($_POST["campRider"]) && 
-							$_POST["campRider"] == "yes"
+							$_POST["campRider"] == 'yes'
 						)
 					)
 					{
