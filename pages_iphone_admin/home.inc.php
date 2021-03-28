@@ -51,7 +51,7 @@ unset($_SESSION["ride"]);
 </ul>
 
 <ul>
-<li><a href="javascript: LoadPage('member_management','');">Member Management<span class="showArrow secondaryArrow">.</span></a></li>
+<li><a href="javascript: LoadPage('member_management','');">Customer Management<span class="showArrow secondaryArrow">.</span></a></li>
 <li><a href="javascript: LoadPage('invoice_management','');">Invoice Management<span class="showArrow secondaryArrow">.</span></a></li>
 </ul>
 <ul>

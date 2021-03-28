@@ -2,7 +2,7 @@
 
 <div class="main">
 	<div class="main_text">
-    <div class="main_text_title">View active camp riders</div>
+    <div class="main_text_title">View active Postpaid Customers</div>
     <table width="980" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="100">First Name</td>
@@ -42,7 +42,7 @@
       
     </table>
     <br /><br />
-    <div class="main_text_title">View inactive camp riders</div>
+    <div class="main_text_title">View inactive Postpaid Customers</div>
     <table width="980" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="100">First Name</td>
@@ -76,7 +76,7 @@
 	      }
       }
       else {
-      	echo "<tr><td>No Camp Riders yet. To add a member please click on the Add Button.</td></tr>";
+      	echo "<tr><td>No Postpaid Customers yet. To add a member please click on the Add Button.</td></tr>";
       }
 	     ?>
       

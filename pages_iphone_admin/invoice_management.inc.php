@@ -24,7 +24,7 @@ function getOpenInvoiceValue($type,$memberID=null){
 
 //echo "<pre>";print_r($_POST);echo "</pre>";
 ?>
-<h2>Non Members</h2>
+<h2>Guests</h2>
 <ul>
 	<?php
 	echo "<li>";
@@ -51,7 +51,7 @@ function getOpenInvoiceValue($type,$memberID=null){
 	echo "</li>";
 	?>
 </ul>
-<h2>Camp Riders</h2>
+<h2>Postpaid Customers</h2>
 <ul>
 	<?php
 	echo "<li>";

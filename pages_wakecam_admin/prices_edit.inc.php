@@ -114,7 +114,7 @@ echo "</pre>";
 	                		echo "checked";
 	                	}
 	                	?>/>
-            Member<br />
+            Prepaid/Postpaid Customer<br />
             <input name="nonmember" type="checkbox" value="1" <?php 
 	                	if (isset($categories_data[0]["member"])){
 	                		if ($categories_data[0]["member"] == 2 || $categories_data[0]["member"] == 3){
@@ -125,7 +125,7 @@ echo "</pre>";
 	                		echo "checked";
 	                	}
 	                	?> />
-            NON-Member </td>
+            Guest </td>
           <td align="left"><input type="submit" id="button3" value="Save" /></td>
           <input type="hidden" name="add" value="categories" />
           <?php if (isset($categories_data[0]["ID"])){echo "<input type=\"hidden\" name=\"ID\" value=\"" . $categories_data[0]["ID"] . "\">";}?>
@@ -189,7 +189,7 @@ echo "</pre>";
 	                		echo "checked";
 	                	}
 	                	?>/>
-            Member<br />
+            Prepaid/Postpaid Customer<br />
             <input name="nonmember" type="checkbox" value="1" <?php 
 	                	if (isset($sports_data[0]["member"])){
 	                		if ($sports_data[0]["member"] == 2 || $sports_data[0]["member"] == 3){
@@ -200,7 +200,7 @@ echo "</pre>";
 	                		echo "checked";
 	                	}
 	                	?> />
-            NON-Member </td>
+            Guest </td>
           <td align="left"><input type="submit" id="button3" value="Save" /></td>
           <input type="hidden" name="add" value="sports" />
           <?php if (isset($sports_data[0]["ID"])){echo "<input type=\"hidden\" name=\"ID\" value=\"" . $sports_data[0]["ID"] . "\">";}?>

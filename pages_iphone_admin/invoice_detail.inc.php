@@ -591,7 +591,7 @@ elseif
 
     if ( isset($_POST["rideID"]) && is_numeric($_POST["rideID"]))
     {
-        echo '<h2>Mail Invoice to Non-Member</h2>';
+        echo '<h2>Mail Invoice to Guest</h2>';
         echo '<ul>';
 			echo '<li>Email';
 				echo '<span class="showArrow secondaryWArrow">';

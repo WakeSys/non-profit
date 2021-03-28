@@ -6,9 +6,9 @@
         <td width="380">&nbsp;</td>
     	<td>
         <div class="navi_text">
-	<a class="navi_text_link" href="<?php echo INDEX;?>?p=members&sub=view_members">Members</a>
-    <a class="navi_text_link" href="<?php echo INDEX;?>?p=members&sub=view_non-members">Non-Members</a>
-    <a class="navi_text_link" href="<?php echo INDEX;?>?p=members&sub=view_camp_riders">Camp<span class="navi_darker_text_link_invisible">_</span>Riders</a>
+	<a class="navi_text_link" href="<?php echo INDEX;?>?p=members&sub=view_members">Prepaid Customer</a>
+    <a class="navi_text_link" href="<?php echo INDEX;?>?p=members&sub=view_non-members">Guest</a>
+    <a class="navi_text_link" href="<?php echo INDEX;?>?p=members&sub=view_camp_riders">Postpaid Customer<span class="navi_darker_text_link_invisible">_</span>Riders</a>
     <a class="navi_text_link" href="<?php echo INDEX;?>?p=members&sub=add">Add</a>
        </div>
         </td>

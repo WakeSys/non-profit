@@ -340,7 +340,7 @@ elseif ( (isset($_POST["rideID"]) && is_numeric($_POST["rideID"])) ||  (isset($_
         <?php
         if ( isset($_POST["rideID"]) && is_numeric($_POST["rideID"])){
             ?>
-            <h2>Mail Invoice to Non-Member</h2>
+            <h2>Mail Invoice to Guest</h2>
             <ul>
             <li>Email<span class="showArrow secondaryWArrow">
                             <label><input class="secondaryInput" name="invoice_mail" type="email" size="12" maxlength="100" /></label></span></li>

@@ -127,7 +127,7 @@ else{
 	
 	
 //	-> Boat&Driver gewählt?
-//	-> Select Member / Non-Member usw....
+//	-> Select Customer / Guest usw....
 	if (isset($_SESSION["ridesettings"]["driverID"]) && $_SESSION["ridesettings"]["driverID"] > 0 && isset($_SESSION["ridesettings"]["boatID"]) && $_SESSION["ridesettings"]["boatID"] > 0){
 	
 		if (isset($_SESSION["ridesettings"]["group"])){
@@ -345,7 +345,7 @@ else{
 			}
 
 		}
-		//Select Group: Member / Non-Member
+		//Select Group: Customer / Guest
 		else {
 			
 			//toDo if only 1 Driver oder only 1 Boat!
@@ -376,10 +376,10 @@ else{
 			echo "--TITLE--Ridertype--";
 			echo "--HOME--";
 			echo "&nbsp;<ul>";
-				echo "<li><a href =\"javascript:LoadPage('ride','group=member')\">Member</a></li>";
-				echo "<li><a href =\"javascript:LoadPage('ride','group=nonmember')\">Non-Member</a></li>";
+				echo "<li><a href =\"javascript:LoadPage('ride','group=member')\">Prepaid Customer</a></li>";
+				echo "<li><a href =\"javascript:LoadPage('ride','group=nonmember')\">Guest</a></li>";
 				if ($countCampRiders > 0){
-					echo "<li><a href =\"javascript:LoadPage('ride','group=camprider')\">Camp Rider</a></li>";
+					echo "<li><a href =\"javascript:LoadPage('ride','group=camprider')\">Postpaid Customer</a></li>";
 				}
 				
 			echo "</ul>";

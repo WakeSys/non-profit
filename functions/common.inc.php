@@ -94,8 +94,9 @@ function setPaid($memberID,$value,$paymentID,$loginID,$status,$type="member",$no
 				$sql = "UPDATE credits SET invoiceID = '" . $invoiceID . "' WHERE memberID = '" . $memberID . "' AND invoiceID IS NULL";
 				$db->execute($sql);
 
-				$sql = "UPDATE members SET campRider = 'inactive' WHERE ID = '" . $memberID . "'";
-				$db->execute($sql);
+				# Do not automatically deactivate Postpaid Customers after payment
+				// $sql = "UPDATE members SET campRider = 'inactive' WHERE ID = '" . $memberID . "'";
+				// $db->execute($sql);
 			}
 
 			$sql = "SELECT mail FROM members WHERE ID = '" . $memberID . "'";

@@ -50,10 +50,10 @@ foreach ($_POST as $key => $elem){
 	<div class="main_text">
 	<div class="main_text_title">Edit Prices for  <?php 
       	if ($member == 1){
-      		echo "Members and Camp Riders";
+      		echo "Prepaid/Postpaid Customers";
       	}
       	else {
-      		echo "Non-Members";
+      		echo "Guests";
       	}
       	?> 
 <br />

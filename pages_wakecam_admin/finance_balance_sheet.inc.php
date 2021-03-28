@@ -166,9 +166,9 @@
                 <table >
                     <tr class="bg_stats">
           <td width="100">Date</td>
-          <td width="110">In Members</td>
-          <td width="110">In Non Members</td>
-          <td width="110">In Camp Riders</td>
+          <td width="110">In Prepaid Customers</td>
+          <td width="110">In Guests</td>
+          <td width="110">In Postpaid Customers</td>
           <td width="110">In Nights</td>
           <td width="110">Exp Fuel </td>
           <td width="110">Exp Driver </td>
@@ -387,9 +387,9 @@
                 <table >
                     <tr class="bg_stats">
                       <td width="100">Date</td>
-                      <td width="110">In Members</td>
-                      <td width="110">In Non Members</td>
-                      <td width="110">In Camp Riders</td>
+                      <td width="110">In Prepaid Customers</td>
+                      <td width="110">In Guests</td>
+                      <td width="110">In Postpaid Customers</td>
                       <td width="110">In Nights</td>
                       <td width="110">Exp Fuel </td>
                       <td width="110">Exp Driver </td>

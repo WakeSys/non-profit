@@ -1,6 +1,6 @@
 <div class="main">
 	<div class="main_text">
-	<div class="main_text_title">View non-members</div>
+	<div class="main_text_title">View Guests</div>
 	<form action="" method="POST">
 	Choose Year:
 
