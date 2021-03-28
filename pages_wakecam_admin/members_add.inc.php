@@ -613,30 +613,13 @@ function inputField ($name,$value=null){
 				else if ($type == "edit"){
 					echo "<td>";
 					echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
-					if (
-						isset($_POST["campRider"]) && 
-						$_POST["campRider"] == 'yes'
-					)
-					{
-						echo " checked";
-					}
-					elseif (
-						!isset($_POST["campRider"]) && 
-						$member[0]["campRider"] == 'yes'
-					)
+					if ($member[0]["campRider"] == 'yes')
 					{
 						echo " checked";
 					}
 					echo ">yes";
 					echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
-					if (
-						(isset($_POST["campRider"]) &&
-						$_POST["campRider"] == 'inactive') || 
-						(
-							!isset($_POST["campRider"]) && 
-							$member[0]["campRider"] != 'inactive'
-						) 
-					)
+					if ($member[0]["campRider"] == 'inactive')
 					{
 						echo " checked";
 					}
