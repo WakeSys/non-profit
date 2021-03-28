@@ -559,7 +559,17 @@ echo '<div class="main">';
 				}
 				echo ">yes";
 				echo "<input type=\"radio\" name=\"driver\" value=\"2\"";
-				if ((isset($_POST["driver"]) && $_POST["driver"] == 2) || (!isset($_POST["driver"]) && $member[0]["driver"] != 1) ){
+				if (
+					(
+						isset($_POST["driver"]) && 
+						$_POST["driver"] == 2
+					) || 
+					(
+						!isset($_POST["driver"]) && 
+						$member[0]["driver"] != 1
+					) 
+				)
+				{
 					echo " checked";
 				}
 				
@@ -576,10 +586,10 @@ echo '<div class="main">';
 	if ($type != "add")
 	{
 
-		// echo '$member[0]: ';
-		// echo '<pre>';
-		// 	print_r($member[0]);
-		// echo '</pre>';
+		echo '$member[0]: ';
+		echo '<pre>';
+			print_r($member[0]);
+		echo '</pre>';
 		if(
 			$member[0]["campRider"] == 'yes' || 
 			$member[0]["campRider"] == 'inactive' 
@@ -604,10 +614,14 @@ echo '<div class="main">';
 					echo "<td>";
 					echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
 					if (
-						$member[0]["campRider"] == 'yes' ||
 						(
 							isset($_POST["campRider"]) && 
 							$_POST["campRider"] == 'yes'
+						) ||
+						(
+							!isset($_POST["campRider"]) &&
+							$member[0]["campRider"] == 'yes'
+
 						)
 					)
 					{
@@ -616,10 +630,14 @@ echo '<div class="main">';
 					echo ">yes";
 					echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
 					if (
-						$member[0]["campRider"] == 'inactive' ||
 						(
 							isset($_POST["campRider"]) && 
-							$_POST["campRider"] == "inactive"
+							$_POST["campRider"] == 'inactive'
+						) ||
+						(
+							!isset($_POST["campRider"]) &&
+							$member[0]["campRider"] == 'inactive'
+
 						)
 					)
 					{
