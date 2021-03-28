@@ -590,14 +590,17 @@ function inputField ($name,$value=null){
 		echo '<pre>';
 			print_r($member[0]);
 		echo '</pre>';
-		if(!$member["campRider"] == 'no')
+		if(
+			$member[0]["campRider"] == 'yes' || 
+			$member[0]["campRider"] == 'inactive' 
+		)
 		{
 			echo '<tr>';
 				echo '<td>Active</td>';
 				if ($type == "view")
 				{
 					echo "<td>";
-					if ($member["campRider"] == 'yes')
+					if ($member[0]["campRider"] == 'yes')
 					{
 						echo "yes";
 					}
