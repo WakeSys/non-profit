@@ -113,7 +113,7 @@ echo '<div class="main">';
 					}
 				}
 				$sql .= " WHERE ID = '" . $_GET["edit"] . "'";
-				echo $sql;
+				// echo $sql;
 				$db->execute($sql);
 			}
 			elseif ($type == "add"){
