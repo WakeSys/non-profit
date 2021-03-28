@@ -22,12 +22,11 @@ function inputField ($name,$value=null){
 	echo " value=\"" . $value . "\">";
 }
 
-?>
 
-<div class="main">
-	<div class="main_text">
-	<?php
-	if (isset($_GET["view"])){
+echo '<div class="main">';
+	echo '<div class="main_text">';
+	if (isset($_GET["view"]))
+	{
 		$sql = "SELECT A.*,UNIX_TIMESTAMP(A.birthday) AS birthday, B.name AS categoryName FROM members AS A LEFT JOIN categories AS B ON A.categoryID = B.ID WHERE A.ID = '" . $_GET["view"] . "'";
 		$member = $db->queryArray($sql);
 		$type = "view";
@@ -39,25 +38,30 @@ function inputField ($name,$value=null){
 		}
 		
 	}
-	elseif (isset($_GET["edit"])){
+	elseif (isset($_GET["edit"]))
+	{
 		$sql = "SELECT A.*,UNIX_TIMESTAMP(A.birthday) AS birthday,B.name AS categoryName FROM members AS A LEFT JOIN categories AS B ON A.categoryID = B.ID WHERE A.ID = '" . $_GET["edit"] . "'";
 		$member = $db->queryArray($sql);
 		$type = "edit";
-		if ($member[0]["campRider"] == 'no'){
+		if ($member[0]["campRider"] == 'no')
+		{
 			echo "<div class=\"main_text_title\">Edit Prepaid Customer</div>";	
 		}
-		else {
+		else 
+		{
 			echo "<div class=\"main_text_title\">Edit Postpaid Customer</div>";
 		}
 	}
-	else {
+	else 
+	{
 		echo "<div class=\"main_text_title\">Add Customer</div>";
 		$type = "add";
 	}
 	
 	
 	
-	if (isset($_POST["form_sent"]) && $_POST["form_sent"] == "yes"){
+	if (isset($_POST["form_sent"]) && $_POST["form_sent"] == "yes")
+	{
 		check_input("first_name",1,"name");
 		check_input("last_name",1,"name");
 		check_input("phone_number",1,"phone");
@@ -170,17 +174,14 @@ function inputField ($name,$value=null){
 		}
 	}
 	
-	?>
-	<form action="" method="POST">
-	<input type="hidden" name="form_sent" value="yes">
-	<table width="600" border="0" cellspacing="0" cellpadding="0" class="text_invoice_boxes_white">
-<?php
-	if ($type == "add"){
-		?>
-		 <tr>
-			<td width="194">Prepaid or Postpaid Customer?</td>
-			<td><select name="campRider" id="select">
-				<?php
+	echo '<form action="" method="POST">';
+	echo '<input type="hidden" name="form_sent" value="yes">';
+	echo '<table width="600" border="0" cellspacing="0" cellpadding="0" class="text_invoice_boxes_white">';
+	if ($type == "add")
+	{
+		echo '<tr>';
+			echo '<td width="194">Prepaid or Postpaid Customer?</td>';
+			echo '<td><select name="campRider" id="select">';
 					echo "<option value = \"no\"";
 					if (isset($_POST["campRider"]) && $_POST["campRider"] == "no"){
 						echo " selected";
@@ -191,23 +192,20 @@ function inputField ($name,$value=null){
 						echo " selected";
 					}
 					echo ">Postpaid Customer</option>";
-				?>
 			  
-			</select> 
-			</td>
-		  </tr>
-		<?php
+				echo '</select>';
+			echo '</td>';
+		echo '</tr>';
 	}
-	?>	 
-	  <td>Category</td>
-		<?php
-		if ($type == "view"){
+		echo '<td>Category</td>';
+
+		if ($type == "view")
+		{
 			echo "<td>" . $member[0]["categoryName"] . "</td>";
 		}
-		else {
-			?>
-			<td><select name="categoryID">
-			<?php
+		else 
+		{
+			echo '<td><select name="categoryID">';
 				$sql = "SELECT * FROM categories WHERE active = 1 ";
 				$sql .= "AND (member = 1 OR member = 3)";
 				$catArr = $db->queryArray($sql);
@@ -232,17 +230,14 @@ function inputField ($name,$value=null){
 					echo $category["name"];
 					echo "</option>";
 				}
-			?>
-			</select></td>
-			<?php
+			echo '</select></td>';
 		}
-		?>
 			
-	  </tr>
-	  <tr>
-		<td>First Name</td>
-		<?php
-		if ($type == "view"){
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>First Name</td>';
+		if ($type == "view")
+		{
 			echo "<td>" . $member[0]["first_name"] . "</td>";
 		}
 		elseif($type == "add") {
@@ -260,11 +255,9 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Last Name</td>
-		<?php
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Last Name</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["last_name"] . "</td>";
 		}
@@ -283,20 +276,16 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <?php
-	  if ($type != "view"){
-		  echo "<tr>";
-			echo "<td>Password</td>";
-			echo "<td><input name=\"password\" type=\"password\" size=\"30\" /></td>";
-		  echo "</tr>";
-	  }
-	  ?>
-	  <tr>
-	  <tr>
-		<td>Birthday (dd.mm.yyyy)</td>
-		<?php
+	  	echo '</tr>';
+		if ($type != "view"){
+			echo "<tr>";
+				echo "<td>Password</td>";
+				echo "<td><input name=\"password\" type=\"password\" size=\"30\" /></td>";
+			echo "</tr>";
+		}
+		echo '<tr>';
+		echo '<tr>';
+		echo '<td>Birthday (dd.mm.yyyy)</td>';
 		if ($type == "view"){
 			echo "<td>" . date("d\.m\.Y",$member[0]["birthday"]) . "</td>";
 		}
@@ -315,11 +304,9 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Social Security</td>
-		<?php
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Social Security</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["social_security"] . "</td>";
 		}
@@ -338,11 +325,9 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Address</td>
-		<?php
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Address</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["address"] . "</td>";
 		}
@@ -361,11 +346,9 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Postal Code</td>
-		<?php
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Postal Code</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["postal_code"] . "</td>";
 		}
@@ -384,12 +367,10 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  </tr>
-	  <tr>
-		<td>Town</td>
-		<?php
+		echo '</tr>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Town</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["town"] . "</td>";
 		}
@@ -408,11 +389,9 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Country</td>
-		<?php
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Country</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["country"] . "</td>";
 		}
@@ -431,11 +410,9 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Phone Number</td>
-		<?php
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Phone Number</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["phone_number"] . "</td>";
 		}
@@ -454,11 +431,9 @@ function inputField ($name,$value=null){
 				}
 			echo "</td>";
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Email</td>
-		<?php
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Email</td>';
 		if ($type == "view"){
 			echo "<td>" . $member[0]["mail"] . "</td>";
 		}
@@ -475,17 +450,17 @@ function inputField ($name,$value=null){
 				else {
 					inputField("mail",$member[0]["mail"]);		
 				}
-			echo "</td>";
+			echo '</td>';
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-	  </tr>
-	  <tr>
-		<td>Ballast</td>
-		<?php
+		echo '</tr>';
+
+		echo '<tr>';
+			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td>';
+		echo '</tr>';
+
+		echo '<tr>';
+		echo '<td>Ballast</td>';
 		if ($type == "view"){
 			echo "<td>";
 			if ($member[0]["ballast"] == "yes"){
@@ -529,11 +504,11 @@ function inputField ($name,$value=null){
 			}
 					
 		}
-		?>
-	  </tr>
-	  <tr>
-		<td>Driver</td>
-		<?php
+
+	  	echo '</tr>';
+		echo '<tr>';
+		echo '<td>Driver</td>';
+
 		if ($type == "view"){
 			echo "<td>";
 			if ($member[0]["driver"] == 1){
@@ -586,10 +561,10 @@ function inputField ($name,$value=null){
 	if ($type != "add")
 	{
 
-		echo '$member[0]: ';
-		echo '<pre>';
-			print_r($member[0]);
-		echo '</pre>';
+		// echo '$member[0]: ';
+		// echo '<pre>';
+		// 	print_r($member[0]);
+		// echo '</pre>';
 		if(
 			$member[0]["campRider"] == 'yes' || 
 			$member[0]["campRider"] == 'inactive' 
@@ -613,13 +588,25 @@ function inputField ($name,$value=null){
 				else if ($type == "edit"){
 					echo "<td>";
 					echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
-					if ($member[0]["campRider"] == 'yes')
+					if (
+						$member[0]["campRider"] == 'yes' ||
+						(
+							isset($_POST["campRider"]) && 
+							$_POST["campRider"] == "yes"
+						)
+					)
 					{
 						echo " checked";
 					}
 					echo ">yes";
 					echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
-					if ($member[0]["campRider"] == 'inactive')
+					if (
+						$member[0]["campRider"] == 'inactive' ||
+						(
+							isset($_POST["campRider"]) && 
+							$_POST["campRider"] == "inactive"
+						)
+					)
 					{
 						echo " checked";
 					}
@@ -635,37 +622,39 @@ function inputField ($name,$value=null){
 		}
 	}
 
-	  echo '<tr>';
-		echo '<td>&nbsp;</td>';
+  	echo '<tr>';
+	echo '<td>&nbsp;</td>';
 
-		if ($type == "view"){
-			echo "<td>";
-				if ($member[0]["campRider"] == 'no')
-				{
-					echo "<a href=\"" . INDEX . "?p=members&sub=view_members\">Back</a>";
-				}
-				else {
-					echo "<a href=\"" . INDEX . "?p=members&sub=view_camp_riders\">Back</a>";	
-				}
-				
-				echo " <a href=\"" . INDEX . "?p=members&sub=add&edit=" . $_GET["view"] . "\">edit</a>";
-			echo "</td>";
-		}
-		elseif($type == "edit"){
-			echo "<td><input type=\"submit\" value=\"Submit\" /></td>";
-		}
-		elseif($type == "add"){
-			echo "<td><input type=\"submit\" value=\"Add\" /></td>";
-		}
+	if ($type == "view"){
+		echo "<td>";
+			if ($member[0]["campRider"] == 'no')
+			{
+				echo "<a href=\"" . INDEX . "?p=members&sub=view_members\">Back</a>";
+			}
+			else 
+			{
+				echo "<a href=\"" . INDEX . "?p=members&sub=view_camp_riders\">Back</a>";	
+			}
 			
-		?>
+			echo " <a href=\"" . INDEX . "?p=members&sub=add&edit=" . $_GET["view"] . "\">edit</a>";
+		echo "</td>";
+	}
+	elseif($type == "edit")
+	{
+		echo "<td><input type=\"submit\" value=\"Submit\" /></td>";
+	}
+	elseif($type == "add")
+	{
+		echo "<td><input type=\"submit\" value=\"Add\" /></td>";
+	}
 		
-	  </tr>
-	  </table>
-	  </form>
-	</div>
-</div> 
-<div class="bottom"></div>
-</center>
-</body>
-<!--Bottom End -->
+		
+echo '</tr>';
+echo '</table>';
+echo '</form>';
+echo '</div>';
+echo '</div> ';
+echo '<div class="bottom"></div>';
+echo '</center>';
+echo '</body>';
+echo '<!--Bottom End -->';
