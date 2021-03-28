@@ -65,7 +65,6 @@ a:active {
 	font-weight: normal;
 	color: #000;
 	vertical-align: middle;
-	word-spacing: 20px;
 	padding-right: 15px;
 	padding-left: 15px;
 }
@@ -89,6 +88,7 @@ a:active {
 	font-weight: normal;
 	color: #000;
 	text-decoration: none;
+	padding-left: 20px;
 }
 .navi_darker_text_link {
 	font-family: Verdana, Geneva, sans-serif;

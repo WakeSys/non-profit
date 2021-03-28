@@ -6,7 +6,7 @@
 <ul>	 	
 	<li><a href="javascript: LoadPage('camp_members','inactive');">Postpaid Customers (inactive)<span class="showArrow secondaryArrow">.</span></a></li>
 </ul>    
---TITLE--Member Mgmt--
+--TITLE--Customer Mgmt--
 --BACK_TITLE--Home--
 --BACK_PAGE--home--
 --HOME--

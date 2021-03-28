@@ -32,10 +32,10 @@ function inputField ($name,$value=null){
 		$member = $db->queryArray($sql);
 		$type = "view";
 		if ($member[0]["campRider"] == 'no'){
-			echo "<div class=\"main_text_title\">View Member</div>";	
+			echo "<div class=\"main_text_title\">View Prepaid Customer</div>";	
 		}
 		else {
-			echo "<div class=\"main_text_title\">View CampMember</div>";
+			echo "<div class=\"main_text_title\">View Postpaid Customer</div>";
 		}
 		
 	}
@@ -44,14 +44,14 @@ function inputField ($name,$value=null){
 		$member = $db->queryArray($sql);
 		$type = "edit";
 		if ($member[0]["campRider"] == 'no'){
-			echo "<div class=\"main_text_title\">Edit Member</div>";	
+			echo "<div class=\"main_text_title\">Edit Prepaid Customer</div>";	
 		}
 		else {
-			echo "<div class=\"main_text_title\">Edit CampMember</div>";
+			echo "<div class=\"main_text_title\">Edit Postpaid Customer</div>";
 		}
 	}
 	else {
-		echo "<div class=\"main_text_title\">Add Member</div>";
+		echo "<div class=\"main_text_title\">Add Customer</div>";
 		$type = "add";
 	}
 	
@@ -148,7 +148,11 @@ function inputField ($name,$value=null){
 				first_mail($memberID);
 				echo "<div style=\"color:green;\">member / camp rider entered successfully</div>";
 				//add 1 Year membership!!!
-				if (isset($_POST["campRider"]) && $_POST["campRider"] == "no"){
+				if (
+					isset($_POST["campRider"]) && 
+					$_POST["campRider"] == "no"
+				)
+				{
 					extendMembership($memberID);
 				}
 				
@@ -174,19 +178,19 @@ function inputField ($name,$value=null){
 	if ($type == "add"){
 		?>
 		 <tr>
-		    <td width="194">Member or Camp Rider?</td>
+		    <td width="194">Prepaid or Postpaid Customer?</td>
 		    <td><select name="campRider" id="select">
 				<?php
 					echo "<option value = \"no\"";
 					if (isset($_POST["campRider"]) && $_POST["campRider"] == "no"){
 						echo " selected";
 					}
-					echo ">Member</option>";
+					echo ">Prepaid Customer</option>";
 					echo "<option value = \"yes\"";
 					if (isset($_POST["campRider"]) && $_POST["campRider"] == "yes"){
 						echo " selected";
 					}
-					echo ">Camp Rider</option>";
+					echo ">Postpaid Customer</option>";
 				?>
 		      
 	        </select> 
@@ -578,38 +582,21 @@ function inputField ($name,$value=null){
 	    <td>&nbsp;</td>
 	    <td>&nbsp;</td>
       </tr>
-	  <tr>
-	    <td>Facebook Mail</td>
-	    <?php
-	    if ($type == "view"){
-	    	echo "<td>" . $member[0]["facebookmail"] . "</td>";
-	    }
-	    elseif($type == "add") {
-	    	echo "<td>";
-	    	inputField("facebookmail","POST");
-	    	echo "</td>";
-	    }
-	    elseif($type == "edit") {
-	    	echo "<td>";
-	    		if (isset($_POST["facebookmail"])){
-	    			inputField("facebookmail",$_POST["facebookmail"]);
-	    		}
-	    		else {
-	    			inputField("facebookmail",$member[0]["facebookmail"]);		
-	    		}
-	    	echo "</td>";
-	    }
-	    ?>
-      </tr>
-	  <tr>
-	    <td>Push to Facebook</td>
-	    <?php
+      <?php
+      if (!$member[0]["campRider"] == 'no')
+      {
+
+      }
+      echo '<tr>';
+	    echo '<td>Active</td>';
 	    if ($type == "view"){
 	    	echo "<td>";
-	    	if ($member[0]["facebookON"] == 1){
+	    	if ($member[0]["campRider"] == 'yes')
+	    	{
 	    		echo "yes";
 	    	}
-	    	else {
+	    	else 
+	    	{
 	    		echo "no";
 	    	}
 	    	echo "</td>";
@@ -617,35 +604,56 @@ function inputField ($name,$value=null){
 	    else {
 	    	echo "<td>";
 	    	if ($type == "add"){
-	    		echo "<input type=\"radio\" name=\"facebookON\" value=\"1\"";
-	    		if (isset($_POST["facebookON"]) && $_POST["facebookON"] == 1){
+	    		echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
+	    		if (
+	    			isset($_POST["campRider"]) && 
+	    			$_POST["campRider"] == 'yes'
+	    		)
+	    		{
 	    			echo " checked";
 				}
 				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"facebookON\" value=\"2\"";
-		    	if ((isset($_POST["facebookON"]) && $_POST["facebookON"] == 2) || !isset($_POST["facebookON"])){
+		    	echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
+		    	if ((isset($_POST["campRider"]) && $_POST["campRider"] == 'inactive') || !isset($_POST["campRider"]))
+		    	{
 	    			echo " checked";
 				}
 				
 		    	echo ">no</td>";
 	    	}
 	    	elseif ($type == "edit"){
-	    		echo "<input type=\"radio\" name=\"facebookON\" value=\"1\"";
-	    		if (isset($_POST["facebookON"]) && $_POST["facebookON"] == 1){
+	    		echo "<input type=\"radio\" name=\"campRider\" value=\"yes\"";
+	    		if (
+	    			isset($_POST["campRider"]) && 
+	    			$_POST["campRider"] == 'yes'
+	    		)
+	    		{
 	    			echo " checked";
 				}
-				elseif (!isset($_POST["facebookON"]) && $member[0]["facebookON"] == 1){
+				elseif (
+					!isset($_POST["campRider"]) && 
+					$member[0]["campRider"] == 'yes'
+				)
+				{
 					echo " checked";
 				}
 				echo ">yes";
-		    	echo "<input type=\"radio\" name=\"facebookON\" value=\"2\"";
-		    	if ((isset($_POST["facebookON"]) && $_POST["facebookON"] == 2) || (!isset($_POST["facebookON"]) && $member[0]["facebookON"] != 1) ){
+		    	echo "<input type=\"radio\" name=\"campRider\" value=\"inactive\"";
+		    	if (
+		    		(isset($_POST["campRider"]) &&
+		    		$_POST["campRider"] == 'inactive') || 
+		    		(
+		    			!isset($_POST["campRider"]) && 
+		    			$member[0]["campRider"] != 'inactive'
+		    		) 
+		    	)
+		    	{
 	    			echo " checked";
 				}
 				
 		    	echo ">no</td>";
 	    	}	
-	    }	
+	    }
 	    ?>
       </tr>
 	  <tr>
@@ -657,7 +665,8 @@ function inputField ($name,$value=null){
 	    <?php
 	    if ($type == "view"){
 	    	echo "<td>";
-	    		if ($member[0]["campRider"] == 'no'){
+	    		if ($member[0]["campRider"] == 'no')
+	    		{
 	    			echo "<a href=\"" . INDEX . "?p=members&sub=view_members\">Back</a>";
 	    		}
 	    		else {
