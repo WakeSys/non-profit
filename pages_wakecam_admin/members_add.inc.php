@@ -1,18 +1,18 @@
 <?php
 
-echo '<table>';
-foreach ($_POST as $key => $value) 
-{
-    echo "<tr>";
-    echo "<td>";
-    echo $key;
-    echo "</td>";
-    echo "<td>";
-    echo $value;
-    echo "</td>";
-    echo "</tr>";
-}
-echo '</table>';
+// echo '<table>';
+// foreach ($_POST as $key => $value) 
+// {
+//     echo "<tr>";
+//     echo "<td>";
+//     echo $key;
+//     echo "</td>";
+//     echo "<td>";
+//     echo $value;
+//     echo "</td>";
+//     echo "</tr>";
+// }
+// echo '</table>';
 
 function inputField ($name,$value=null){
 	global $error;
@@ -130,6 +130,7 @@ echo '<div class="main">';
 				$sql .= " WHERE ID = '" . $_GET["edit"] . "'";
 				// echo $sql;
 				$db->execute($sql);
+				echo "<div style=\"color:green;\">Customer edited successfully</div>";
 			}
 			elseif ($type == "add"){
 				$sql = "INSERT INTO members (";
@@ -585,11 +586,10 @@ echo '<div class="main">';
 	<?php
 	if ($type != "add")
 	{
-
-		echo '$member[0]: ';
-		echo '<pre>';
-			print_r($member[0]);
-		echo '</pre>';
+		// echo '$member[0]: ';
+		// echo '<pre>';
+		// 	print_r($member[0]);
+		// echo '</pre>';
 		if(
 			$member[0]["campRider"] == 'yes' || 
 			$member[0]["campRider"] == 'inactive' 
