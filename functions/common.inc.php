@@ -20,7 +20,7 @@ function first_mail($memberID) {
 	$mailSubject = preg_replace("/\[last_name_of_member\]/",$memberData[0]["last_name"],$mailSubject);
 
 	$email = new \SendGrid\Mail\Mail(); 
-	$email->setFrom("noreply@wakesys.com");
+	$email->setFrom(getenv('SENDGRID_EMAIL_ADDRESS'));
 	$email->setSubject($mailSubject);
 	$email->addTo($memberData[0]["mail"]);
 	// $email->addCc('EMAIL@PROVIDER.com');
@@ -108,7 +108,7 @@ function setPaid($memberID,$value,$paymentID,$loginID,$status,$type="member",$no
 			ob_end_clean();
 
 			$email = new \SendGrid\Mail\Mail(); 
-			$email->setFrom("noreply@wakesys.com");
+			$email->setFrom(getenv('SENDGRID_EMAIL_ADDRESS'));
 			$email->setSubject("Confirmation of payment");
 			$email->addTo($mail);
 			// $email->addCc('EMAIL@PROVIDER.com');
@@ -154,7 +154,7 @@ function setPaid($memberID,$value,$paymentID,$loginID,$status,$type="member",$no
 				ob_end_clean();
 
 				$email = new \SendGrid\Mail\Mail(); 
-				$email->setFrom("noreply@wakesys.com");
+				$email->setFrom(getenv('SENDGRID_EMAIL_ADDRESS'));
 				$email->setSubject("Confirmation of Payment");
 				$email->addTo($nonMemberMail);
 				// $email->addCc('EMAIL@PROVIDER.com');
